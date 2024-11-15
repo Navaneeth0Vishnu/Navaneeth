@@ -1,0 +1,46 @@
+//Separate all even numbers from the range 2000h to 3000h to a new location//
+
+MOV SI, 2000H
+MOV CL, 1000H
+MOV DI, 4000H
+
+L2:
+    MOV AX, [SI]
+    TEST AX, 1
+    JZ L3
+    JMP L4
+
+L3:
+    MOV [DI], AX
+    INC DI
+
+L4:
+    INC SI
+    DEC CL
+    JNZ L2
+
+HLT
+
+
+//Separate all odd numbers from the range 2000h to 3000h to a new location//
+
+MOV SI, 2000H       
+MOV CX, 1000H       
+MOV DI, 4000H       
+
+L2:
+    MOV AX, [SI]    
+    TEST AX, 1      
+    JNZ L3          
+    JMP L4          
+
+L3:
+    MOV [DI], AX    
+    INC DI          
+
+L4:
+    INC SI          
+    LOOP L2         
+    
+HLT                
+

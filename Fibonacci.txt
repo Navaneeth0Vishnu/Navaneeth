@@ -1,0 +1,20 @@
+MOV SI, 1000h
+MOV AX, 00H
+MOV BX, 01H
+
+MOV [SI], AX
+INC SI
+MOV [SI], BX
+INC SI
+
+MOV CX, 0FH
+L1:
+    ADD AX, BX
+    MOV [SI], AX
+    INC SI
+    MOV DX, BX
+    MOV BX, AX
+    MOV AX, DX
+    LOOP L1
+
+HLT

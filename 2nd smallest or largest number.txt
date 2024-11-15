@@ -1,0 +1,76 @@
+//second smallest number                        
+
+ORG 100h
+
+MOV SI, 2000h          
+MOV CX, [1000h]        
+DEC CX                 
+
+MOV AL, [SI]           
+MOV BL, AL            
+
+
+FIND_SMALLEST:
+    INC SI             
+    CMP [SI], AL       
+    JGE SKIP_SMALLEST  
+    MOV BL, AL         
+    MOV AL, [SI]      
+SKIP_SMALLEST:
+    LOOP FIND_SMALLEST  
+
+MOV SI, 2000h         
+MOV CX, [1000h]        
+DEC CX                 
+
+
+FIND_SECOND_SMALLEST:
+    INC SI             
+    CMP [SI], BL       
+    JLE SKIP_SECOND   
+    CMP [SI], AL      
+    JE SKIP_SECOND     
+    MOV BL, [SI]       
+SKIP_SECOND:
+    LOOP FIND_SECOND_SMALLEST  
+
+
+
+HLT                   
+  
+  
+  //second largest number
+  
+                 ORG 100h
+
+MOV SI, 2000h
+MOV CX, [1000h]
+DEC CX
+
+MOV AL, [SI]
+MOV BL, [SI]
+
+FIND_LARGEST:
+    INC SI
+    CMP [SI], AL
+    JLE SKIP_LARGEST
+    MOV BL, AL
+    MOV AL, [SI]
+SKIP_LARGEST:
+    LOOP FIND_LARGEST
+
+MOV SI, 2000h
+MOV CX, [1000h]
+DEC CX
+
+FIND_SECOND_LARGEST:
+    INC SI
+    CMP [SI], BL
+    JGE SKIP_SECOND
+    CMP [SI], AL
+    JE SKIP_SECOND
+    MOV BL, [SI]
+SKIP_SECOND:
+    LOOP FIND_SECOND_LARGEST
+
+HLT
